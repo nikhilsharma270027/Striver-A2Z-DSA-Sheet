@@ -37,7 +37,7 @@ int main() {
 // b
 // c
 
-//Input:
+//Output:
 // a->2
 // b->2
 // c->2
