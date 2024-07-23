@@ -58,7 +58,7 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSumBetter(vector<int>& nums, int target) {
         map<int, int> mpp; // Map to store the index of each number
         int n = nums.size();
         for (int i = 0; i < n; i++) {
@@ -88,7 +88,7 @@ int main() {
     int target = 14; // Example target
 
     Solution obj;
-    vector<int> ans = obj.twoSum(nums, target);
+    vector<int> ans = obj.twoSumBetter(nums, target);
 
     // Print the result
     cout << "Indices of the two numbers that add up to " << target << " are: ";
@@ -106,3 +106,44 @@ int main() {
 // Map contents after iteration 1: {2: 0} {6: 1} 
 // Map contents after iteration 2: {2: 0} {5: 2} {6: 1} 
 // Indices of the two numbers that add up to 14 are: 1 and 3
+
+//The time complexity is O(n log n) and the space complexity is O(n).
+
+
+// Optimal Approach (Greedy method)
+#include <bits/stdc++.h>
+using namespace std;
+
+string twoSumOptimal(int n, vector<int> &arr, int target) {
+    sort(arr.begin(), arr.end());
+    int left = 0, right = n - 1;
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+        if (sum == target) {
+            return "YES";
+        }
+        else if (sum < target) left++;
+        else right--;
+    }
+    return "NO";
+}
+
+int main() {
+    int n = 5;
+    vector<int> arr = {2, 6, 5, 8, 11};
+    int target = 14;
+    string ans = twoSumOptimal(n, arr, target);
+    cout << "This is the answer for variant 1: " << ans << endl;
+    return 0;
+}
+
+// Output: 
+// This is the answer for variant 1: YES
+
+// Time Complexity: O(N) + O(N*logN), where N = size of the array.
+// Reason: The loop will run at most N times. And sorting the array will take N*logN time complexity.
+
+// Space Complexity: O(1) as we are not using any extra space.
+
+// Note: Here we are distorting the given array. So, if we need to consider this change, the space complexity will be O(N).
+
