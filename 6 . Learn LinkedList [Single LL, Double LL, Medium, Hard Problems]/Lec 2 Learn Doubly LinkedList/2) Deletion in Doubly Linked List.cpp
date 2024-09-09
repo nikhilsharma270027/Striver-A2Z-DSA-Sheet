@@ -40,9 +40,53 @@ void print(Node* head){
     }
 }
 
+Node* deletionHead(Node* head){
+    if(head == NULL || head->next == NULL){
+        return NULL;
+    }
+    Node* prev = head;           //3   ->   4  ->  5
+    head = head->next;          //prev     head
+
+    head->back = nullptr;
+    prev->next = nullptr;
+
+    delete prev;
+    return head;
+}
+
+Node* deletionTail(Node* head){
+    if(head == NULL || head->next == NULL){
+        return NULL;
+    }
+    Node* tail = head;
+    while(tail->next != NULL){
+        tail = tail->next;
+    }
+    Node* newTail = tail->back;
+    newTail->next = nullptr;
+    tail->back = nullptr;
+
+    delete tail;
+    return head;
+}
+
 int main(){
     vector<int> arr = {12, 5, 8, 7};
     Node* head = convertArr2DLL(arr);
     print(head);
+
+    head = deletionHead(head);
+    cout << endl << "Deletion of head DLL : " ;
+    print(head);
+
+    head = deletionTail(head);
+    cout << endl << "Deletion of Tail DLL : " ;
+    print(head);
+
     return 0;
 }
+
+
+// the Doubly linked List : 12 5 8 7 
+// Deletion of head DLL : 5 8 7 
+// Deletion of Tail DLL : 5 8 
