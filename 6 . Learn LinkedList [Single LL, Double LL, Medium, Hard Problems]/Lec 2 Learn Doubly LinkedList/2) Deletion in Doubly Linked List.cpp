@@ -70,6 +70,38 @@ Node* deletionTail(Node* head){
     return head;
 }
 
+Node* deletionKth(Node* head, int k) {
+    if(head == NULL) {
+        return NULL;
+    }
+    int cnt = 0;
+    Node* kNode = head;
+    while(kNode != NULL){
+        cnt++;
+        if(cnt == k) break;
+        kNode = kNode->next;
+    }
+    Node* prev = kNode->back;
+    Node* front = kNode->next;
+
+    if(prev == NULL && front == NULL){// single element
+        return NULL; 
+    }
+    else if(prev == NULL){
+        return deletionHead(head);
+    }
+    else if(front == NULL){
+        return deletionTail(head);
+    }
+    prev->next = front;  // prev -> kNode -> front
+    front->back = prev; //  prev ->       -> front
+
+    kNode->next = nullptr;
+    kNode->back = nullptr;
+    delete kNode;
+    return head;
+}
+
 int main(){
     vector<int> arr = {12, 5, 8, 7};
     Node* head = convertArr2DLL(arr);
@@ -81,6 +113,10 @@ int main(){
 
     head = deletionTail(head);
     cout << endl << "Deletion of Tail DLL : " ;
+    print(head);
+
+    head = deletionKth(head, 2);
+    cout << endl << "Deletion of Kth element DLL : " ;
     print(head);
 
     return 0;
