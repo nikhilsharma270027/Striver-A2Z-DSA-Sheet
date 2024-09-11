@@ -102,21 +102,63 @@ Node* deletionKth(Node* head, int k) {
     return head;
 }
 
+// void deleteNode(Node* temp) {
+//     Node* prev = temp->back;
+//     Node* front = temp->next;
+
+//     if(front == NULL) {
+//         prev->next = nullptr;
+//         temp->back = nullptr;
+//         free(temp);
+//         return;
+//     }
+//     prev->next = front;
+//     front->back = prev;
+
+//     temp->next = temp->back = nullptr;
+//     delete temp;
+// }
+
+void deleteNode(Node* temp) {
+    if (temp == nullptr) return; // Ensure the node is not null
+
+    Node* prev = temp->back;
+    Node* front = temp->next;
+
+    // If temp is the last node (tail)
+    if (front == nullptr) {
+        if (prev != nullptr) {
+            prev->next = nullptr; // Update the previous node's next pointer
+        }
+    } else {
+        prev->next = front;       // Update the previous node's next pointer
+        front->back = prev;       // Update the next node's back pointer
+    }
+
+    // Deallocate memory using delete, not free
+    delete temp;
+}
+
+
+
 int main(){
-    vector<int> arr = {12, 5, 8, 7};
+    vector<int> arr = {12, 5, 8, 7, 4, 9};
     Node* head = convertArr2DLL(arr);
-    print(head);
+    // print(head);
 
-    head = deletionHead(head);
-    cout << endl << "Deletion of head DLL : " ;
-    print(head);
+    // head = deletionHead(head);
+    // cout << endl << "Deletion of head DLL : " ;
+    // print(head);
 
-    head = deletionTail(head);
-    cout << endl << "Deletion of Tail DLL : " ;
-    print(head);
+    // head = deletionTail(head);
+    // cout << endl << "Deletion of Tail DLL : " ;
+    // print(head);
 
-    head = deletionKth(head, 2);
-    cout << endl << "Deletion of Kth element DLL : " ;
+    // head = deletionKth(head, 2);
+    // cout << endl << "Deletion of Kth element DLL : " ;
+    // print(head);
+
+    deleteNode(head);
     print(head);
 
     return 0;
