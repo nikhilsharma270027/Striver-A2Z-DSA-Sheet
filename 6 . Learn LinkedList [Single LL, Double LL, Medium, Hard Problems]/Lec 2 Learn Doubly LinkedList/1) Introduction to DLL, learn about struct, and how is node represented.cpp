@@ -1,24 +1,34 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Define a Node class for doubly linked list
 class Node {
 public:
-    int data;       // Data stored in the node
-    Node* next;     // Pointer to the next node in the list (forward direction)
-    Node* back;     // Pointer to the previous node in the list (backward direction)
+    // Data stored in the node
+    int data;   
+    // Pointer to the next node in the list 
+    //(forward direction)
+    Node* next;     
+    // Pointer to the previous node in the list
+    //(backward direction)
+    Node* back;     
 
-    // Constructor for a Node with both data, a reference to the next node, and a reference to the previous node
+    // Constructor for a Node with both data,
+    //a reference to the next node,
+    //and a reference to the previous node
     Node(int data1, Node* next1, Node* back1) {
         data = data1;
-        next = next1; // Similar to a singly linked list, but now with a 'back' pointer.
-        back = back1; // Addition of 'back' pointer for the doubly linked list.
+        next = next1;
+        back = back1;
     }
 
-    // Constructor for a Node with data, and no references to the next and previous nodes (end of the list)
+    // Constructor for a Node with data,
+    //and no references to the next and
+    //backious nodes (end of the list)
     Node(int data1) {
         data = data1;
-        next = nullptr; // Similar to a singly linked list.
-        back = nullptr; // Addition of 'back' pointer initialization.
+        next = nullptr;
+        back = nullptr;
     }
 };
 
