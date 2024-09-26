@@ -151,3 +151,25 @@ node* intersectionPresent(node* head1,node* head2) {
 
 // Space Complexity: O(1)
 // Reason: No extra space is used.
+
+
+
+// Optimal Approach
+//utility function to check presence of intersection
+node* intersectionPresent(node* head1,node* head2) {
+    if(head1 == NULL || head2 == NULL) return NULL;
+    node* t1 = head1;
+    node* t2 = head2;
+    while(t1 != t2){
+        t1 = t1->next;
+        t2 = t2->next;
+        
+        if(t1 == t2) return t1;
+        
+        if(t1 == NULL) t1 = head2;
+        if(t2 == NULL) t2 = head1;
+    }
+    return t1;
+}
+
+// Time Complexity: O(n1+n2)
