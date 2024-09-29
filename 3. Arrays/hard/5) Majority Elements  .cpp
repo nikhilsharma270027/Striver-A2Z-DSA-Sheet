@@ -44,3 +44,37 @@ Complexity Analysis
 Time Complexity: O(N2), where N = size of the given array.
 Reason: For every element of the array the inner loop runs for N times. And there are N elements in the array. So, the total time complexity is O(N2).
 Space Complexity: O(1) as we are using a list that stores a maximum of 2 elements. The space used is so small that it can be considered constant.
+
+
+
+// Better Approach
+
+vector<int> majorityElement(vector<int> v) {
+    int n = v.size(); //size of the array
+    vector<int> ls; // list of answers
+    //declaring a map:
+    map<int, int> mpp;
+
+    // least occurrence of the majority element:
+    int mini = int(n / 3) + 1;
+
+    //storing the elements with its occurnce:
+    for (int i = 0; i < n; i++) {
+        mpp[v[i]]++;
+
+        //checking if v[i] is
+        // the majority element:
+        if (mpp[v[i]] == mini) {
+            ls.push_back(v[i]);
+        }
+        if (ls.size() == 2) break;
+    }
+    return ls;
+}
+Complexity Analysis
+
+Time Complexity: O(N*logN), where N = size of the given array.
+Reason: We are using a map data structure. Insertion in the map takes logN time. And we are doing it for N elements. So, it results in the first term O(N*logN).
+If we use unordered_map instead, the first term will be O(N) for the best and average case and for the worst case, it will be O(N2).
+
+Space Complexity: O(N) as we are using a map data structure. We are also using a list that stores a maximum of 2 elements. That space used is so small that it can be considered constant.
