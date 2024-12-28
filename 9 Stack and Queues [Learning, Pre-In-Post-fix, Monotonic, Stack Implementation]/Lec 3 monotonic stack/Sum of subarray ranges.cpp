@@ -1,27 +1,26 @@
-#include<bits/stdc++.h>
-using namespace std;
+// #include<bits/stdc++.h>
+// using namespace std;
 
-int SumOfSubarrayRange(std::vector<int> num){
-    int n = num.size();
-    int sum = 0;
-    for(int i = 0 ; i < n-1;i++) {
-        int longest = num[i], smallest = num[i];
-        for(int  j = i+1; j<n;j++) {
-            longest = max(longest, num[j]);
-            smallest = min(smallest, num[j]);
-            sum = sum + (longest - smallest);
-        }
-    }
-    return sum;
-}
+// int SumOfSubarrayRange(std::vector<int> num){
+//     int n = num.size();
+//     int sum = 0;
+//     for(int i = 0 ; i < n-1;i++) {
+//         int longest = num[i], smallest = num[i];
+//         for(int  j = i+1; j<n;j++) {
+//             longest = max(longest, num[j]);
+//             smallest = min(smallest, num[j]);
+//             sum = sum + (longest - smallest);
+//         }
+//     }
+//     return sum;
+// }
 
-int main(){
-    vector<int> num = {1, 4, 3, 2};
-    int res = SumOfSubarrayRange(num);
-    cout << res << " ";
-\
-    return 0;
-}
+// int main(){
+//     vector<int> num = {1, 4, 3, 2};
+//     int res = SumOfSubarrayRange(num);
+//     cout << res << " ";
+//     return 0;
+// }
 
 // Complexity
 // TC -> o(n square)
@@ -37,14 +36,17 @@ class Solution {
 public:
     vector<int> findNse(vector<int> &arr) {
         vector<int> nse(arr.size());
+        // cout << arr.size() << " ";
         stack<int> st;
         for (int i = arr.size() - 1; i >= 0; --i) {
             while (!st.empty() && arr[st.top()] >= arr[i]) {
                 st.pop();
             }
             nse[i] = st.empty() ? arr.size() : st.top();
+            cout << nse[i] << "\t";
             st.push(i);
         }
+        cout << endl;
         return nse;
     }
 
@@ -56,8 +58,10 @@ public:
                 st.pop();
             }
             pse[i] = st.empty() ? -1 : st.top();
+             cout << pse[i] << "\t";
             st.push(i);
         }
+        cout << endl;
         return pse;
     }
 
@@ -87,8 +91,10 @@ public:
             if (!st.empty()) {
                 nge[i] = st.top();
             }
+            cout << nge[i] << "\t";
             st.push(i);
         }
+        cout << endl;
         return nge;
     }
 
@@ -103,8 +109,10 @@ public:
             if (!st.empty()) {
                 maxPrev[i] = st.top();
             }
+            cout << maxPrev[i] << "\t";
             st.push(i);
         }
+        cout << endl;
         return maxPrev;
     }
 
@@ -133,7 +141,7 @@ public:
 int main()
 {
     Solution solution;
-    vector<int> arr = {3, 1, 2, 4};
+    vector<int> arr = {1, 4, 3, 2};
     long long result = solution.subArrayRanges(arr);
     cout << result;
     return 0;
