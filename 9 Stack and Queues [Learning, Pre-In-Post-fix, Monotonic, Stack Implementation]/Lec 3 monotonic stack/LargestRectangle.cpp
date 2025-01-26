@@ -125,3 +125,43 @@ int main()
     cout << "largest area" << obj.LargestRectanhle(heights);
     return 0;
 }
+
+result : 25
+
+// optimal approach
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        stack<int> st;
+        int maxArea = 0;
+        int n = heights.size();
+        
+        for (int i = 0; i<=n;i++) {
+            int currenttHeight = (i == n) ? 0 : heights[i];
+            
+            while(!st.empty() && heights[st.top()] > currenttHeight) {
+                int height = heights[st.top()];
+                st.pop();
+                int width =  st.empty() ? i : i - st.top() - 1;
+                maxArea  =max(maxArea, height * width);
+            }
+            st.push(i);
+        }
+        return maxArea;
+    }
+};
+
+int main() {
+    Solution solution;
+
+    // Test input
+    vector<int> heights = {3, 2, 10, 11, 5, 10, 6, 3};
+
+    // Call the method and print the result
+    int maxArea = solution.largestRectangleArea(heights);
+    cout << "The largest rectangle area is: " << maxArea << endl;
+
+    return 0;
+}
