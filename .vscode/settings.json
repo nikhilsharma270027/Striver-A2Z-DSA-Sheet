@@ -3,6 +3,7 @@
     "files.associations": {
         "*.embeddedhtml": "html",
         "*.ejs": "html",
-        "new": "cpp"
+        "new": "cpp",
+        "vector": "cpp"
     }
 }
