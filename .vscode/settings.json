@@ -4,6 +4,11 @@
         "*.embeddedhtml": "html",
         "*.ejs": "html",
         "new": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string_view": "cpp",
+        "span": "cpp"
     }
 }
