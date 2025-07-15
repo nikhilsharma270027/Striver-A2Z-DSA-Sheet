@@ -9,6 +9,7 @@
         "deque": "cpp",
         "list": "cpp",
         "string_view": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "1290 convert binary number in a linked list to integer": "cpp"
     }
 }
