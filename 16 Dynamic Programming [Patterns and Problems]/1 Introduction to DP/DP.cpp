@@ -1,3 +1,12 @@
+// Recursion Basic
+// fibonacci(sum) {
+//     if(n == 0) return 0;
+//     if(n == 1) return 1;
+//     return f(n-1) + f(n-2);
+// }
+    
+
+
 // Memoization
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,7 +25,7 @@ int main(){
 }
 
 //------------------------///
-//Tabulation
+//Tabulation - Bottom Up
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
